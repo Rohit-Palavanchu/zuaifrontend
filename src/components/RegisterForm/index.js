@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 import './index.css';
 
 const RegisterForm = () => {
@@ -7,6 +8,10 @@ const RegisterForm = () => {
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
+
+    if(Cookies.get('token')){
+        navigate('/',{replace:true})
+    }
 
     const onChangeUsername = (e) => {
         setUsername(e.target.value);
@@ -18,7 +23,7 @@ const RegisterForm = () => {
 
     const onSubmitRegister = async (e) => {
         e.preventDefault();
-        const response = await fetch("http://localhost:3000/blogs/register", {
+        const response = await fetch("https://zuaibackend-vtsf.onrender.com/blogs/register", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

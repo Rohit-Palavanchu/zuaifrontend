@@ -24,13 +24,17 @@ const SpecificPost = () => {
     const navigate = useNavigate();
     const token = Cookies.get('token');
 
+    if(!Cookies.get('token')){
+        navigate('/login', {replace:true})
+    }
+
     const onCreateBlog = ()=>{
         navigate('/create-blog')
     }
 
     const getAllBlogs = useCallback(async () => {
         try {
-            const response = await fetch('http://localhost:3000/blogs/posts', {
+            const response = await fetch('https://zuaibackend-vtsf.onrender.com/blogs/userposts', {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -47,7 +51,7 @@ const SpecificPost = () => {
         } catch (error) {
             console.error(error);
         }
-    }, [token]); // Add 'token' as a dependency because it's used inside the function
+    }, [token]);
 
     const clickBlog = (id) => {
         navigate(`/post/${id}`);
@@ -55,7 +59,7 @@ const SpecificPost = () => {
 
     useEffect(() => {
         getAllBlogs();
-    }, [getAllBlogs]); // Include getAllBlogs in the dependency array
+    }, [getAllBlogs]);
 
     return (
         <>

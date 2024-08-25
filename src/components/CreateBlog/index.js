@@ -8,7 +8,9 @@ const CreateBlog = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const navigate = useNavigate();
-
+    if(!Cookies.get('token')){
+        navigate('/login', {replace:true})
+    }
     const handleSubmit = async (e) => {
         e.preventDefault();
     
@@ -18,7 +20,7 @@ const CreateBlog = () => {
         };
     
         try {
-            const response = await fetch('http://localhost:3000/blogs/posts', {
+            const response = await fetch('https://zuaibackend-vtsf.onrender.com/blogs/posts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

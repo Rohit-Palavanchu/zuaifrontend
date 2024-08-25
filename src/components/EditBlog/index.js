@@ -10,10 +10,14 @@ const EditBlog = () => {
     const navigate = useNavigate();
     const { id } = useParams();
 
+    if(!Cookies.get('token')){
+        navigate('/login', {replace:true})
+    }
+
     useEffect(() => {
         const fetchBlog = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/blogs/posts/${id}`, {
+                const response = await fetch(`https://zuaibackend-vtsf.onrender.com/blogs/posts/${id}`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${Cookies.get('token')}`,
@@ -45,7 +49,7 @@ const EditBlog = () => {
         };
 
         try {
-            const response = await fetch(`http://localhost:3000/blogs/posts/${id}`, {
+            const response = await fetch(`https://zuaibackend-vtsf.onrender.com/blogs/posts/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

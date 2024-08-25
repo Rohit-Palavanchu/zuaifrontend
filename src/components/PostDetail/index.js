@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../Header";
 import { useParams, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 import "./index.css";
 
 const PostDetail = () => {
@@ -9,10 +10,14 @@ const PostDetail = () => {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
+    if(!Cookies.get('token')){
+        navigate('/login', {replace:true})
+    }
+
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/blogs/posts/${id}`);
+                const response = await fetch(`https://zuaibackend-vtsf.onrender.com/blogs/posts/${id}`);
                 const data = await response.json();
                 setPost(data);
             } catch (error) {

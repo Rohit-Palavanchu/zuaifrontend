@@ -30,12 +30,16 @@ const Home = () => {
     const [notification, setNotification] = useState('');
     const navigate = useNavigate();
 
+    if(!Cookies.get('token')){
+        navigate('/login', {replace:true})
+    }
+
     const onCreateBlog = () => {
         navigate('/create-blog');
     };
 
     const getAllBlogs = async () => {
-        const response = await fetch('http://localhost:3000/blogs/posts', {
+        const response = await fetch('https://zuaibackend-vtsf.onrender.com/blogs/posts', {
             method: 'GET',
         });
         const data = await response.json();
@@ -48,7 +52,7 @@ const Home = () => {
 
     const handleDelete = async (id) => {
         const token = Cookies.get('token');
-        const response = await fetch(`http://localhost:3000/blogs/posts/${id}`, {
+        const response = await fetch(`https://zuaibackend-vtsf.onrender.com/blogs/posts/${id}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`,
