@@ -1,70 +1,196 @@
-# Getting Started with Create React App
+Here’s a comprehensive `README.md` file for the frontend part of your project, including details for the login and registration routes:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+# ZuAi Frontend
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+ZuAi Frontend is the client-side application for interacting with the ZuAi backend service. It provides a user interface for managing blog posts, user authentication, and more. This application is built using React.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project Structure
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+c:/My Projects/ZuAi/zuaifrontend/
+  ├─ node_modules/ (ignored)
+  ├─ public/
+  │  ├─ favicon.ico
+  │  ├─ index.html
+  │  ├─ logo192.png
+  │  ├─ logo512.png
+  │  ├─ manifest.json
+  │  └─ robots.txt
+  ├─ src/
+  │  ├─ components/
+  │  │  ├─ CreateBlog/
+  │  │  │  ├─ index.css
+  │  │  │  └─ index.js
+  │  │  ├─ EditBlog/
+  │  │  │  ├─ index.css
+  │  │  │  └─ index.js
+  │  │  ├─ Header/
+  │  │  │  ├─ index.css
+  │  │  │  └─ index.js
+  │  │  ├─ Home/
+  │  │  │  ├─ index.css
+  │  │  │  └─ index.js
+  │  │  ├─ LoginForm/
+  │  │  │  ├─ index.css
+  │  │  │  └─ index.js
+  │  │  ├─ PostDetail/
+  │  │  │  ├─ index.css
+  │  │  │  └─ index.js
+  │  │  ├─ ProtectedRoute/
+  │  │  │  └─ index.js
+  │  │  ├─ RegisterForm/
+  │  │  │  ├─ index.css
+  │  │  │  └─ index.js
+  │  │  └─ SpecificPost/
+  │  │     ├─ index.css
+  │  │     └─ index.js
+  │  ├─ App.css
+  │  ├─ App.js
+  │  ├─ App.test.js
+  │  ├─ index.css
+  │  ├─ index.js
+  │  ├─ logo.svg
+  │  ├─ reportWebVitals.js
+  │  └─ setupTests.js
+  ├─ .gitignore
+  ├─ package-lock.json
+  ├─ package.json
+  └─ README.md
+```
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repository:**
 
-### `npm run build`
+   ```bash
+   git clone <repository-url>
+   cd zuaifrontend
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Install dependencies:**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Start the development server:**
 
-### `npm run eject`
+   ```bash
+   npm start
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   The frontend application will be available at `http://localhost:3000`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## API Integration
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The frontend interacts with the ZuAi backend API deployed at `https://zuaibackend-vtsf.onrender.com`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 1. User Authentication
 
-## Learn More
+#### Login
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Endpoint:** `POST /blogs/login`
+- **Request Body:**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ```json
+   {
+       "username": "rohan",
+       "password": "rohan@2001"
+   }
+   ```
 
-### Code Splitting
+- **Description:** Authenticates a user and returns a JWT token for subsequent requests.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### Register
 
-### Analyzing the Bundle Size
+- **Endpoint:** `POST /blogs/register`
+- **Request Body:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   ```json
+   {
+       "username": "rohan",
+       "password": "rohan@2001"
+   }
+   ```
 
-### Making a Progressive Web App
+- **Description:** Registers a new user in the system.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 2. Blog Management
 
-### Advanced Configuration
+#### Create a Blog
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Endpoint:** `POST /blogs/posts`
+- **Headers:**
+  - `Authorization: Bearer <token>`
+- **Request Body:**
 
-### Deployment
+   ```json
+   {
+     "title": "My First Updated Blog Post",
+     "content": "This is the content of my first blog post."
+   }
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **Description:** Allows an authenticated user to create a new blog post.
 
-### `npm run build` fails to minify
+#### Edit a Blog
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Endpoint:** `PUT /blogs/posts/:id`
+- **Headers:**
+  - `Authorization: Bearer <token>`
+- **Request Body:**
+
+   ```json
+   {
+     "title": "Updated Blog Post Title",
+     "content": "This is the updated content for the blog post."
+   }
+   ```
+
+- **Description:** Allows an authenticated user to edit an existing blog post.
+
+#### Delete a Blog
+
+- **Endpoint:** `DELETE /blogs/posts/:id`
+- **Headers:**
+  - `Authorization: Bearer <token>`
+- **Description:** Allows an authenticated user to delete a specific blog post.
+
+### 3. Viewing Blog Posts
+
+#### Get All Posts
+
+- **Endpoint:** `GET /blogs/posts`
+- **Description:** Retrieves a list of all blog posts.
+
+#### Get a Specific Post
+
+- **Endpoint:** `GET /blogs/posts/:id`
+- **Description:** Retrieves a specific blog post by its ID.
+
+#### Get Posts Based on Logged-in User
+
+- **Endpoint:** `GET /blogs/userposts`
+- **Headers:**
+  - `Authorization: Bearer <token>`
+- **Description:** Retrieves all blog posts created by the logged-in user.
+
+## Testing
+
+Run the tests using:
+
+```bash
+npm test
+```
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+Feel free to customize any sections as needed!
