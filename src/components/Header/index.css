@@ -1,0 +1,48 @@
+.nav-bar{
+    background-color: #FFFFFF;
+}
+.header-container{
+    width:100%;
+}
+@media  screen and (min-width:720px) {
+    .zuai-logo{
+        height: 52px;
+        width: 215px;
+        overflow: clip;
+        cursor: pointer;
+        display: inline;
+        font-family: "Roboto" "San Serif";
+        font-size: 16px;
+        line-height: 24px;
+        text-decoration: none solid rgb(33, 37, 41);
+    }  
+    .list-items{
+        font-family: "Roboto";
+        font-size: 15px;
+        letter-spacing: 0.13132px;
+        line-height: 21px;
+        text-decoration: none solid rgb(28, 142, 168);
+        cursor: pointer;
+    }  
+}
+@media  screen and (max-width:720px) {
+    .zuai-logo{
+        height: 26px;
+        width: 105px;
+        overflow: clip;
+        cursor: pointer;
+        display: inline;
+        font-family: "Roboto" "San Serif";
+        font-size: 16px;
+        line-height: 24px;
+        text-decoration: none solid rgb(33, 37, 41);
+    }  
+    .list-items{
+        font-family: "Roboto";
+        font-size: 14px;
+        letter-spacing: 0.13132px;
+        line-height: 21px;
+        text-decoration: none solid rgb(28, 142, 168);
+        cursor: pointer;
+    }  
+}

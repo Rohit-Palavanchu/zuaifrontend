@@ -1,0 +1,71 @@
+.notification {
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.blog-container {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-container {
+    width: 90%;
+    max-width: 250px;
+    height: auto;
+    max-height: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.title {
+    color: #ff9900;
+    font-family: "Roboto";
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.read-more {
+    color: #ff9900dd;
+    font-family: "Roboto";
+    font-style: italic;
+    font-weight: 200;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.delete-button {
+    background-color: #f1c40f; /* Yellow background for delete button */
+    border: none;
+    padding: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 16px;
+}
+
+.create-blog-btn-container {
+    width: 100vw;
+    display: flex;
+    margin: 10px;
+    margin-left: 15px;
+}

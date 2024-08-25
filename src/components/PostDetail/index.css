@@ -1,0 +1,37 @@
+.back-home {
+    margin: 20px;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.detail-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    min-height: 80vh;
+}
+
+.detail-card {
+    background-color: #e3f2fd; /* Light blue background for the card */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+    text-align: left;
+    margin: 0 auto;
+}
+
+.detail-card h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: #1976d2; /* Darker blue for the heading */
+}
+
+.detail-card p {
+    font-size: 16px;
+    color: #1565c0; /* Blue color for the text */
+    line-height: 1.6;
+}
