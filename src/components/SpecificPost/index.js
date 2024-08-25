@@ -47,7 +47,8 @@ const SpecificPost = () => {
             }
 
             const data = await response.json();
-            setBlogs(data);
+            const {blogs} = data
+            setBlogs(blogs);
         } catch (error) {
             console.error(error);
         }
