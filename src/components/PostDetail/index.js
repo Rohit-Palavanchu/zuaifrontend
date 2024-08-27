@@ -10,11 +10,11 @@ const PostDetail = () => {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
-    if(!Cookies.get('token')){
-        navigate('/login', {replace:true})
-    }
 
     useEffect(() => {
+        if(!Cookies.get('token')){
+            navigate('/login', {replace:true})
+        }
         const fetchPost = async () => {
             try {
                 const response = await fetch(`https://zuaibackend-vtsf.onrender.com/blogs/posts/${id}`);
@@ -28,7 +28,7 @@ const PostDetail = () => {
         };
 
         fetchPost();
-    }, [id]);
+    }, [id, navigate]);
 
     if (loading) {
         return <div>Loading...</div>;

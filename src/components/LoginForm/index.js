@@ -36,7 +36,9 @@ const LoginForm = () => {
         if (!response.ok) {
             setMessage(data.message);
         } else {
-            Cookies.set('token', data.token);
+            const expirationTime = new Date();
+            expirationTime.setTime(expirationTime.getTime() + (1 * 60 * 60 * 1000));
+            Cookies.set('token', data.token, { expires: expirationTime });
             navigate('/', {replace:true});
         }
     };

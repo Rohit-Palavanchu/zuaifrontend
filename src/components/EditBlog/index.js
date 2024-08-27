@@ -10,11 +10,11 @@ const EditBlog = () => {
     const navigate = useNavigate();
     const { id } = useParams();
 
-    if(!Cookies.get('token')){
-        navigate('/login', {replace:true})
-    }
 
     useEffect(() => {
+        if(!Cookies.get('token')){
+            navigate('/login', {replace:true})
+        }
         const fetchBlog = async () => {
             try {
                 const response = await fetch(`https://zuaibackend-vtsf.onrender.com/blogs/posts/${id}`, {
@@ -38,7 +38,7 @@ const EditBlog = () => {
         };
 
         fetchBlog();
-    }, [id]);
+    }, [id, navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

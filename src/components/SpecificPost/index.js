@@ -24,9 +24,12 @@ const SpecificPost = () => {
     const navigate = useNavigate();
     const token = Cookies.get('token');
 
-    if(!Cookies.get('token')){
-        navigate('/login', {replace:true})
-    }
+    useEffect(() => {
+        const token = Cookies.get('token');
+        if (!token) {
+            navigate('/login', { replace: true });
+        }
+    }, [navigate]);
 
     const onCreateBlog = ()=>{
         navigate('/create-blog')

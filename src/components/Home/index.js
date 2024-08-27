@@ -30,9 +30,12 @@ const Home = () => {
     const [notification, setNotification] = useState('');
     const navigate = useNavigate();
 
-    if(!Cookies.get('token')){
-        navigate('/login', {replace:true})
-    }
+    useEffect(() => {
+        const token = Cookies.get('token');
+        if (!token) {
+            navigate('/login', { replace: true });
+        }
+    }, [navigate]);
 
     const onCreateBlog = () => {
         navigate('/create-blog');

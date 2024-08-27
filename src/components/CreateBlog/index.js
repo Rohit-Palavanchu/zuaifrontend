@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../Header";
 import Cookies from "js-cookie";
@@ -8,9 +8,12 @@ const CreateBlog = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const navigate = useNavigate();
-    if(!Cookies.get('token')){
-        navigate('/login', {replace:true})
-    }
+    useEffect(() => {
+        const token = Cookies.get('token');
+        if (!token) {
+            navigate('/login', { replace: true });
+        }
+    }, [navigate]);
     const handleSubmit = async (e) => {
         e.preventDefault();
     
